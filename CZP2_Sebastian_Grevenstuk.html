@@ -1,0 +1,636 @@
+<!DOCTYPE html>
+<html lang="nl"><head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cultureel Zelfportret 2 — Sebastian Grevenstuk</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400&family=DM+Sans:wght@300;400;500&family=Space+Mono&display=swap');
+
+  :root {
+    --ink:        #1a1a2e;
+    --canvas:     #f7f4ef;
+    --accent:     #d4622a;
+    --warm:       #e8dfd0;
+    --moss:       #4a6741;
+    --pale:       #faf8f5;
+    --rule:       #c8bfb0;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--canvas);
+    color: var(--ink);
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 300;
+    line-height: 1.7;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    background: var(--ink);
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 2rem;
+    height: 56px;
+  }
+  nav .brand {
+    font-family: 'Space Mono', monospace;
+    font-size: .75rem;
+    color: var(--accent);
+    letter-spacing: .12em;
+    text-transform: uppercase;
+  }
+  nav ul { list-style: none; display: flex; gap: 1.6rem; }
+  nav ul a {
+    color: var(--warm);
+    text-decoration: none;
+    font-size: .8rem;
+    letter-spacing: .06em;
+    transition: color .2s;
+  }
+  nav ul a:hover { color: var(--accent); }
+
+  /* ── HERO ── */
+  .hero {
+    margin-top: 56px;
+    min-height: 92vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+  }
+  .hero-text {
+    background: var(--ink);
+    padding: 6rem 4rem 4rem;
+    display: flex; flex-direction: column; justify-content: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero-text::before {
+    content: 'CZP';
+    position: absolute; top: -1rem; right: -1.5rem;
+    font-family: 'Playfair Display', serif;
+    font-size: 16rem; font-weight: 700;
+    color: rgba(255,255,255,.04);
+    line-height: 1;
+    pointer-events: none;
+  }
+  .hero-label {
+    font-family: 'Space Mono', monospace;
+    font-size: .7rem;
+    color: var(--accent);
+    letter-spacing: .18em;
+    text-transform: uppercase;
+    margin-bottom: 1.4rem;
+  }
+  .hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.4rem, 5vw, 4.2rem);
+    font-weight: 700;
+    color: #fff;
+    line-height: 1.1;
+    margin-bottom: 1.2rem;
+  }
+  .hero h1 em {
+    font-style: italic;
+    color: var(--accent);
+  }
+  .hero-meta {
+    color: var(--rule);
+    font-size: .85rem;
+    margin-top: 2rem;
+    border-top: 1px solid rgba(255,255,255,.1);
+    padding-top: 1.4rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: .5rem 2rem;
+  }
+  .hero-meta span { display: block; }
+  .hero-meta strong { color: var(--warm); font-weight: 500; }
+
+  .hero-image {
+    background: var(--warm);
+    position: relative;
+    overflow: hidden;
+    min-height: 400px;
+  }
+  .hero-image img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+  /* ── SHARED SECTION STYLES ── */
+  section {
+    padding: 6rem 2rem;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+  section.full { max-width: 100%; padding: 0; }
+
+  .section-eyebrow {
+    font-family: 'Space Mono', monospace;
+    font-size: .68rem;
+    letter-spacing: .2em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: .8rem;
+  }
+  h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: 2rem;
+  }
+  .rule {
+    border: none;
+    border-top: 1px solid var(--rule);
+    margin: 4rem 0;
+  }
+
+  /* ── OPDRACHT 1 ── */
+  #creatieve-vorm {
+    background: var(--pale);
+    border-top: 4px solid var(--accent);
+  }
+  .text-block {
+    background: #fff;
+    border: 1px solid var(--rule);
+    border-radius: 8px;
+    padding: 1.4rem 1.6rem;
+    font-size: .95rem;
+    color: var(--ink);
+    min-height: 120px;
+    width: 100%;
+    font-family: 'DM Sans', sans-serif;
+    line-height: 1.7;
+  }
+
+  /* ── OPDRACHT 2 ── */
+  #vergelijking {
+    background: var(--ink);
+    padding: 6rem 2rem;
+    max-width: 100%;
+  }
+  #vergelijking > .inner {
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+  #vergelijking h2, #vergelijking .section-eyebrow { color: #fff; }
+  #vergelijking .section-eyebrow { color: var(--accent); }
+  .compare-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    margin-top: 2rem;
+  }
+  .compare-card {
+    background: rgba(255,255,255,.06);
+    border: 1px solid rgba(255,255,255,.12);
+    border-radius: 10px;
+    padding: 2rem;
+  }
+  .compare-card h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.2rem;
+    color: var(--accent);
+    margin-bottom: 1rem;
+  }
+  .compare-card .text-block {
+    background: rgba(255,255,255,.08);
+    border-color: rgba(255,255,255,.15);
+    color: var(--warm);
+  }
+  .verdict-row {
+    margin-top: 2rem;
+    background: rgba(212,98,42,.15);
+    border: 1px solid rgba(212,98,42,.35);
+    border-radius: 10px;
+    padding: 1.6rem 2rem;
+  }
+  .verdict-row h3 {
+    font-family: 'Playfair Display', serif;
+    color: var(--accent);
+    margin-bottom: .8rem;
+  }
+  .verdict-row .text-block {
+    background: rgba(255,255,255,.08);
+    border-color: rgba(212,98,42,.3);
+    color: var(--warm);
+  }
+
+  /* ── OPDRACHT 3 ── */
+  #dans .dans-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2.5rem;
+    margin-top: 2rem;
+  }
+  .dans-box {
+    background: #fff;
+    border: 1px solid var(--rule);
+    border-radius: 10px;
+    padding: 1.8rem;
+  }
+  .dans-box h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem;
+    margin-bottom: .8rem;
+    color: var(--ink);
+  }
+  .media-wrap {
+    margin-top: .8rem;
+  }
+  .media-wrap img, .media-wrap video {
+    max-width: 100%;
+    border-radius: 6px;
+    display: block;
+    object-fit: cover;
+  }
+
+  /* ── OPDRACHT 4 ── */
+  #werkweek {
+    background: var(--ink);
+    padding: 6rem 2rem;
+    max-width: 100%;
+  }
+  #werkweek > .inner { max-width: 1100px; margin: 0 auto; }
+  #werkweek h2, #werkweek .section-eyebrow { color: #fff; }
+  #werkweek .section-eyebrow { color: var(--accent); }
+
+  .collage-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(2, 220px);
+    gap: 1rem;
+    margin-top: 2rem;
+  }
+  .collage-item {
+    position: relative;
+    border-radius: 8px;
+    overflow: hidden;
+    background: rgba(255,255,255,.06);
+    border: 1px solid rgba(255,255,255,.1);
+  }
+  .collage-item:nth-child(1) { grid-column: span 2; }
+  .collage-item img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  .collage-caption {
+    position: absolute; bottom: 0; left: 0; right: 0;
+    background: linear-gradient(transparent, rgba(20,20,40,.85));
+    padding: 1.2rem .8rem .6rem;
+    color: #fff;
+    font-size: .78rem;
+  }
+
+  /* ── OPDRACHT 5 ── */
+  #feedback .feedback-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    margin-top: 2rem;
+  }
+  .feedback-card {
+    border-radius: 10px;
+    padding: 2rem;
+    border: 1px solid;
+  }
+  .feedback-card.goed {
+    background: #f0f6ee;
+    border-color: #b8d4b2;
+  }
+  .feedback-card.slecht {
+    background: #fdf2ee;
+    border-color: #e8b8a2;
+  }
+  .feedback-card .card-tag {
+    font-family: 'Space Mono', monospace;
+    font-size: .65rem;
+    letter-spacing: .15em;
+    text-transform: uppercase;
+    margin-bottom: .6rem;
+  }
+  .feedback-card.goed .card-tag { color: var(--moss); }
+  .feedback-card.slecht .card-tag { color: #b84a20; }
+  .feedback-card h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem;
+    margin-bottom: 1.2rem;
+  }
+  .tip-top {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;
+    margin-top: 1rem;
+  }
+  .tip-block .label {
+    font-family: 'Space Mono', monospace;
+    font-size: .65rem;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    display: inline-block;
+    padding: .2rem .5rem;
+    border-radius: 3px;
+    margin-bottom: .5rem;
+  }
+  .tip-block.tip-el .label { background: #ffe0d0; color: #8b3a1a; }
+  .tip-block.top-el .label { background: #d0e8cc; color: #2d5c28; }
+
+  /* ── OPDRACHT 6 ── */
+  #feedforward {
+    background: var(--warm);
+    padding: 6rem 2rem;
+    max-width: 100%;
+  }
+  #feedforward > .inner { max-width: 1100px; margin: 0 auto; }
+  .ff-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    max-width: 600px;
+    margin: 2rem auto 0;
+  }
+  .ff-card {
+    background: #fff;
+    border: 1px solid var(--rule);
+    border-radius: 10px;
+    padding: 2rem;
+  }
+  .ff-card h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem;
+    margin-bottom: 1rem;
+    color: var(--ink);
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--ink);
+    color: rgba(255,255,255,.4);
+    text-align: center;
+    padding: 2rem;
+    font-size: .78rem;
+    font-family: 'Space Mono', monospace;
+    letter-spacing: .06em;
+  }
+
+  @media (max-width: 768px) {
+    .hero { grid-template-columns: 1fr; }
+    .hero-image { min-height: 260px; }
+    .compare-grid, .dans-grid, .feedback-grid { grid-template-columns: 1fr; }
+    .collage-grid { grid-template-columns: 1fr 1fr; }
+    .collage-item:nth-child(1) { grid-column: span 2; }
+    nav ul { display: none; }
+    .tip-top { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="brand">CZP 2 · VWO 5 · 2026</div>
+  <ul>
+    <li><a href="#creatieve-vorm">Intro</a></li>
+    <li><a href="#vergelijking">Vergelijking</a></li>
+    <li><a href="#dans">Dans</a></li>
+    <li><a href="#werkweek">Werkweek</a></li>
+    <li><a href="#feedback">Feedback</a></li>
+    <li><a href="#feedforward">Feedforward</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<div class="hero" id="creatieve-vorm">
+  <div class="hero-text">
+    <div class="hero-label">Cultureel Zelfportret 2 &nbsp;·&nbsp; CKV 5 VWO</div>
+    <h1>
+      <span>Mijn cultureel</span><br>
+      <em class="editable">jaar in beeld</em>
+    </h1>
+    <div class="hero-meta">
+      <div>
+        <span style="font-size:.65rem; letter-spacing:.12em; text-transform:uppercase; color:var(--rule);">Naam</span>
+        <strong><span style="color:var(--warm);">Sebastian Grevenstuk</span></strong>
+      </div>
+      <div>
+        <span style="font-size:.65rem; letter-spacing:.12em; text-transform:uppercase; color:var(--rule);">Klas</span>
+        <strong><span style="color:var(--warm);">A5B</span></strong>
+      </div>
+      <div>
+        <span style="font-size:.65rem; letter-spacing:.12em; text-transform:uppercase; color:var(--rule);">Docent</span>
+        <strong><span style="color:var(--warm);">Anja Serlie</span></strong>
+      </div>
+      <div>
+        <span style="font-size:.65rem; letter-spacing:.12em; text-transform:uppercase; color:var(--rule);">Schooljaar</span>
+        <strong><span style="color:var(--warm);">2025 – 2026</span></strong>
+      </div>
+    </div>
+  </div>
+  <div class="hero-image">
+    <img src="IMG-20260402-WA0000.jpg" alt="Omslagfoto">
+  </div>
+</div>
+
+<!-- ── OPDRACHT 2: VERGELIJKING ── -->
+<section id="vergelijking" class="full">
+  <div class="inner">
+    <div class="section-eyebrow">Opdracht 2 · 4 punten</div>
+    <h2 style="color:#fff;">Het verschil tussen CZP 1 en CZP 2</h2>
+    <div class="compare-grid">
+      <div class="compare-card">
+        <h3>CZP 1</h3>
+        <div class="text-block">In mijn eerste CZP heb ik over mijn interesses verteld met betrekking tot muziek, film, architectuur en design. Zo heb ik verteld dat ik veel naar rap i rock luisterde met soms wat nu-metal. Ook vond ik sci-fi films erg leuk en keek ik naar anime. Ik vond vooral de gotische architectuur in Europa mooi en voor design heb ik naar streetwear kleding gekeken.</div>
+      </div>
+      <div class="compare-card">
+        <h3>CZP 2</h3>
+        <p style="color:rgba(255,255,255,.45); font-size:.82rem; margin-bottom:.8rem;">Mijn culturele interesses &amp; beleving nu:</p>
+        <div class="text-block">In het heden zijn er wel een paar dingen anders, ik luister nu voornamelijk naar nu-metal en alternative metal. Ik heb nog steeds dezelfde mening over architectuur en ook kijk ik nog steeds naar dezelfde genre films. Een andere verandering is in de kledingsmaak. Ik ben meer gaan kijken naar kledingstukken met geborduurde designs erop, een van de merken waarvan ik de kledingstukken het mooist vind is: 'derschutze'.</div>
+      </div>
+    </div>
+    <div class="verdict-row">
+      <h3>De verschillen en waarom wel/niet</h3>
+      <div class="text-block" style="min-height:100px;">Er zijn dus twee van mijn interesses veranderd en twee zijn zo goed als hetzelfde gebleven. Het grootste verschil is in de muzieksmaak, ik ben weggegaan van rap en luister zelden nog naar klassieke rock, ik luister voornamelijk naar metal genres nu. In het begin van het jaar luisterde ik soms wel naar metal, maar hoe vaker ik ernaar luisterde hoe beter het klonk. Dit is tot een punt gekomen waar klassieke rock te saai is voor mij. Een andere verandering is dat ik meer naar kleding met geborduurde designs ben gaan kijken. Osias heeft het merk 'derschutze' aan mij laten zien en meteen vond ik de kleding al mooi, uiteindelijk hebben we allenbij een broek van dit merk gehaald.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ── OPDRACHT 3: DANS ── -->
+<section id="dans">
+  <div class="section-eyebrow">Opdracht 3 · 16 punten</div>
+  <h2>Verslaglegging Workshops Dans</h2>
+
+  <div class="dans-grid">
+    <div class="dans-box">
+      <h3>Over de workshop</h3>
+      <div class="text-block">De workshop vond plaats op 14 april en 12 mei in de Dansschool Ronald en Mieke de Vos. De workshop werd in twee lessen gegeven, in de eerste les werd een dans op "Texas hold 'em" geleerd en in de tweede les werd een dans op "Foot loose" geleerd. De les werd gegeven door de eigenaren van de dansschool: Ronald en Mieke de Vos.</div>
+    </div>
+    <div class="dans-box">
+      <h3>Mijn reflectie</h3>
+      <div class="text-block">Ik heb niet de eerste les kunnen bijwonen in verband met ziekte, dus deze reflectie gaat over de tweede les. Over het algemeen vond ik dit een positieve ervaring. In de tweede les werd een dans op 'Foot loose' aangeleerd. Deze dans was vrij simpel en dus ook leuk om te leren. Als je eenmaal in de dans zat was het leuk omdat het simpel en herhalend is maar je wel een dans uitvoert. Hierna werd de dans van de eerste les herhaald, maar die werd snel uitgelegd (omdat je deze al geleerd zou moeten hebben) en dit maakte het moeilijk om te volgen en mee te doen wat de ervaring toch wat minder maakte.</div>
+    </div>
+    <div class="dans-box">
+      <h3>Dansvideo</h3>
+      <div class="media-wrap">
+        <a href="https://drive.google.com/file/d/158KlKfUsxHi5jwS43_rwxl9mJEfUemDt/view?usp=sharing" target="_blank" style="display: inline-block; background: var(--accent); color: #fff; padding: .6rem 1.2rem; border-radius: 6px; text-decoration: none; font-weight: 500; font-size: .85rem; margin-top: .5rem;">▶️ Bekijk mijn dansvideo via Google Drive</a>
+      </div>
+    </div>
+    <div class="dans-box">
+      <h3>Foto danszaal</h3>
+      <div class="media-wrap">
+        <img src="4590_1000x328.jpg" alt="danszaal" style="width:100%; max-height:220px;">
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="rule" style="max-width:1100px; margin: 0 auto;">
+
+<!-- ── OPDRACHT 4: WERKWEEK ── -->
+<section id="werkweek" class="full">
+  <div class="inner">
+    <div class="section-eyebrow">Opdracht 4 · 10 punten</div>
+    <h2>Fotocollage Werkweek</h2>
+    <p style="color:var(--rule); font-size:.9rem; margin-bottom:1.5rem;">Ik heb voor sommige foto's ook foto's gebruikt van mijn vrienden, tijdens de werkweek heb ik alleen gelet op de architectuur sinds het moeilijk is om van andere disciplines foto's te maken.</p>
+
+    <div class="collage-grid" id="collage">
+      <!-- Slot 1 -->
+      <div class="collage-item">
+        <img src="20260505_215840.jpg" alt="Berlinerdom">
+        <div class="collage-caption">Dit is de Berlinerdom, dit is een voorbeeld van de gotische architectuur die ik eerder heb benoemd in CZP 1</div>
+      </div>
+      <!-- Slot 2 -->
+      <div class="collage-item">
+        <img src="IMG-20260613-WA0017.jpg" alt="Fernsehturm">
+        <div class="collage-caption">Dit is de Fernsehturm, het hoogste gebouw in Berlijn</div>
+      </div>
+      <!-- Slot 3 -->
+      <div class="collage-item">
+        <img src="20260505_220104.jpg" alt="Kunstwerk Berlinerdom">
+        <div class="collage-caption">Dit is het kunstwerk in de boog van de Berlinerdom</div>
+      </div>
+      <!-- Slot 4 -->
+      <div class="collage-item">
+        <img src="IMG-20260613-WA0002.jpg" alt="Sachsenhausen">
+        <div class="collage-caption">Dit is een foto van het concentratiekamp Sachsenhausen</div>
+      </div>
+      <!-- Slot 5 -->
+      <div class="collage-item">
+        <img src="IMG-20260613-WA0001.jpg" alt="Altesmuseum">
+        <div class="collage-caption">Dit is een foto van het Altesmuseum in Berlijn</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── OPDRACHT 5: FEEDBACK ── -->
+<section id="feedback">
+  <div class="section-eyebrow">Opdracht 5 · 40 punten</div>
+  <h2>Feedback over CKV</h2>
+  
+  <div class="feedback-grid">
+    <!-- GOED 1 -->
+    <div class="feedback-card goed">
+      <div class="card-tag">✦ Goed bevallen #1</div>
+      <h3>Cultuurdag (optreden Jongen en Yo)</h3>
+      <div class="text-block" style="background:#f5fbf3; border-color:#c0daba; min-height:80px;">Op de cultuurdag werd een optreden gegeven door Andy Ninvalle, waarin hij met beatboxen het ontstaan beschrijft van hiphop en ook een kijkje geeft van hoe zijn jeugd in armoede was. Ik heb dit optreden als positief ervaren, dit komt vooral door het bericht dat het optreden met zich mee brengt, maar dit bericht wordt op een grappige en leuke manier gedeeld. Na het optreden hebben we ook nog een foto gemaakt met Andy, de foto is hieronder te zien.</div>
+      <div class="media-wrap" style="margin-top:.8rem;">
+        <img src="IMG-20260629-WA0001.jpg" alt="Andy Ninvalle" style="width:100%;">
+      </div>
+      <div class="tip-top">
+        <div class="tip-block tip-el">
+          <div class="label">TIP</div>
+          <div class="text-block" style="min-height:60px; font-size:.85rem;">Het is lastig om met een zaal vol leerlingen van 5 vwo het nog rustig genoeg te houden voor een goed optreden, soms werd het ruis in de zaal te hoog.</div>
+        </div>
+        <div class="tip-block top-el">
+          <div class="label">TOP</div>
+          <div class="text-block" style="min-height:60px; font-size:.85rem;">Het optreden is op een leuke en interessante manier gegeven en met de mensen waarmee ik heb gesproken hadden ze het ook als positief ervaren, ook is het leuker dan andere activiteiten op cultuurdag omdat je niet iets actief moet doen maar gewoon kan genieten.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- GOED 2 -->
+    <div class="feedback-card goed">
+      <div class="card-tag">✦ Goed bevallen #2</div>
+      <h3>DP Dans (verwerking)</h3>
+      <div class="text-block" style="background:#f5fbf3; border-color:#c0daba; min-height:80px;">In de laatste periode moesten we na het uitvoeren van de dansworkshops het verwerken op één van drie manieren. Een eigen LP-hoes maken, een stripverhaal maken of een outfit maken. Ik heb gekozen voor een outfit maken en dit kon als groepje.</div>
+      <div class="media-wrap" style="margin-top:.8rem;">
+        <img src="20260623_085826 (1).jpg" alt="DP Dans" style="width:100%;">
+      </div>
+      <div class="tip-top">
+        <div class="tip-block tip-el">
+          <div class="label">TIP</div>
+          <div class="text-block" style="min-height:60px; font-size:.85rem;">Het was moeilijk om iets interessants te doen met kleding bewerken dus naast een poncho en een bandana hebben we eigenlijk alleen wat kleding samengesteld, maar uiteindelijk is er wel een mooi eindproduct uit gekomen.</div>
+        </div>
+        <div class="tip-block top-el">
+          <div class="label">TOP</div>
+          <div class="text-block" style="min-height:60px; font-size:.85rem;">Ik denk dat ik het een leuke opdracht vond omdat dit een mooi eindproduct is geworden in de fotoshoot, bij andere opdrachten had ik sterk het gevoel dat het anders en beter kon.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- MINDER GOED 1 -->
+    <div class="feedback-card slecht">
+      <div class="card-tag">✗ Minder goed bevallen #1</div>
+      <h3>DP Muziek</h3>
+      <div class="text-block" style="background:#fdf6f3; border-color:#e0b8a2; min-height:80px;">Voor DP Muziek was het de bedoeling om oude materialen te upcyclen om een percussie instrument te maken. Hierna moest je met dit instrument en je groepje's instrumenten een optreden te geven en een eigen liedje te maken.</div>
+      <div class="media-wrap" style="margin-top:.8rem;">
+        <img src="Screenshot 2026-06-29 183250.png" alt="DP Muziek" style="width:100%;">
+      </div>
+      <div class="tip-top">
+        <div class="tip-block tip-el">
+          <div class="label">TIP</div>
+          <div class="text-block" style="min-height:60px; font-size:.85rem;">Het was moeilijk om het instrument mooi te kunnen maken zonder een effect te hebben op het geluid, ook was het moeilijk om goed een liedje te kunnen maken met deze instrumenten.</div>
+        </div>
+        <div class="tip-block top-el">
+          <div class="label">TOP</div>
+          <div class="text-block" style="min-height:60px; font-size:.85rem;">Ik vond wel dat het een leuke periode was, omdat naast de moeilijkheden muziek maken wel gewoon leuk is om te doen ook al ben je niet muzikaal.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- MINDER GOED 2 -->
+    <div class="feedback-card slecht">
+      <div class="card-tag">✗ Minder goed bevallen #2</div>
+      <h3>DP Architectuur</h3>
+      <div class="text-block" style="background:#fdf6f3; border-color:#e0b8a2; min-height:80px;">In periode 2 moesten we een gebouw kiezen om aan te passen/verbeteren in Alphen aan den Rijn. In het begin moest er onderzoek gedaan worden en daarna moest er een maquette worden gemaakt van het verbeterde gebouw, deze opdracht heeft dus betrekking tot het discipline architectuur.</div>
+      <div class="media-wrap" style="margin-top:.8rem;">
+        <img src="Screenshot 2026-06-29 182534.png" alt="DP Architectuur" style="width:100%;">
+      </div>
+      <div class="tip-top">
+        <div class="tip-block tip-el">
+          <div class="label">TIP</div>
+          <div class="text-block" style="min-height:60px; font-size:.85rem;">Ik vond wel dat we weinig tijd hadden om de werkelijke maquette te maken, want het was moeilijk om nog thuis eraan te werken dus al het werk moest op school uitgevoerd worden.</div>
+        </div>
+        <div class="tip-block top-el">
+          <div class="label">TOP</div>
+          <div class="text-block" style="min-height:60px; font-size:.85rem;">Het was een interessante andere vorm van werken omdat je eerst een heel onderzoek moest uitvoeren over architecten en de stijlen. Het was leuk om het weer net wat anders te doen.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── OPDRACHT 6: FEEDFORWARD ── -->
+<section id="feedforward">
+  <div class="inner">
+    <div class="section-eyebrow">Opdracht 6 · 10 punten</div>
+    <h2 style="text-align: center;">Feedforward</h2>
+    <div class="ff-grid">
+      <div class="ff-card">
+        <h3>Aanbeveling</h3>
+        <div class="text-block" style="margin-bottom: 1.5rem;">Ik heb in dit jaar het discipline Film wel gemist. Terwijl vrij wel elke andere discipline in een vorm naar voren is gekomen, bijvoorbeeld bij cultuurdag, mis ik wel het aspect van film. Dit zou in de vorm kunnen zijn van een eigen short film maken met een thema, of iets in de richting van een cartoon of een stop motion. Dat zou mij nog leuk lijken sinds ik dat soort dingen ook heb moeten doen op highschool media&amp;design.</div>
+        <div class="media-wrap">
+          <img src="stopmotion.jpg" alt="Stopmotion" style="width:100%; border-radius: 8px;">
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  CZP 2 · SEBASTIAN GREVENSTUK · VWO 5 · 2026
+</footer>
+
+</body>
+</html>
